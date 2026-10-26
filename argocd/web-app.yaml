@@ -13,6 +13,9 @@ spec:
     namespace: gitops-demo
     server: https://kubernetes.default.svc
   syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
     
