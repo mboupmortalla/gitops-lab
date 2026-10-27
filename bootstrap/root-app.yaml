@@ -1,0 +1,21 @@
+apiVersion: agroproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app
+  namespace: agrocd
+
+spec:
+  project: default
+  source:
+    path: bootstrap
+    repoURL:  git@github.com:mboupmortalla/gitops-lab.git/
+    targetRevision: main
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+
+  syncOption:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true

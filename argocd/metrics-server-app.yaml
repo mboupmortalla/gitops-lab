@@ -13,7 +13,12 @@ spec:
       releaseName: metrics-server
       valuesObject:
         args:
-          - kubelet-insecure-tls
+          - --kubelet-insecure-tls=true
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
+      prune: true
