@@ -10,7 +10,7 @@ nameSuffix: -prod
 images:
   - name: nginx
     newName: nginx
-    newTag: 1.26-alpine
+    newTag: 1.27-alpine
 
 patches:
   - target:
