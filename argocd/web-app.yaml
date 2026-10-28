@@ -39,16 +39,18 @@ spec:
     metadata:
       name: 'web-app-{{.webEnv}}'
     spec:
-      project: web-app-project
+      project: default
       source:
         path: 'app/web/overlays/{{.webEnv}}'
         repoURL: git@github.com:mboupmortalla/gitops-lab.git/
-        tagRevision: main
+        targetRevision: main
       destination:
         namespace: 'web-{{.webEnv}}'
-        server: https://kubernetes.default.svc/
+        server: https://kubernetes.default.svc
       syncPolicy:
         automated:
           enabled: true
           prune: true
           selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
