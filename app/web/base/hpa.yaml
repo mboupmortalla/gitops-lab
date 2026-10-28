@@ -5,7 +5,7 @@ metadata:
   namespace: gitops-demo
 spec:
   maxReplicas: 5
-  minReplicas: 3
+  minReplicas: 2
   scaleTargetRef:
     name: web
     kind: Deployment
@@ -15,5 +15,5 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 60
+          averageUtilization: 50
       type: Resource
