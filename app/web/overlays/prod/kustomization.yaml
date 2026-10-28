@@ -6,8 +6,7 @@ resources:
   - db-password-sealed.yaml
 
 namespace: web-prod
-nameSuffix: -prod
-
+ 
 images:
   - name: nginx
     newName: nginx
