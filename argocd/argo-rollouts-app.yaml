@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://argoproj.github.io/argo-helm
     chart: argo-rollouts
-    targetVersion: 2.43.8
+    targetRevision: 2.43.8
     helm:
       releaseName: argo-rollouts
   destination:
