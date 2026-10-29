@@ -3,10 +3,8 @@ kind: Kustomization
 
 resources:
   - ../../base/
-  - escalate-test.yaml
 
 namespace: web-dev
-nameSuffix: -dev
 
 images:
   - name: nginx
