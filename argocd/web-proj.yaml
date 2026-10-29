@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: web
+  namespace: argocd
+spec:
+  sourceRepos:
+    - git@github.com:mboupmortalla/gitops-lab.git/
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: web-dev
+    - server: https://kubernetes.default.svc
+      namespace: web-prod
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Pod
+    - group: 'apps'
+      kind: Deployment
+    - group: 'autoscaling'
+      kind: autoscaling
