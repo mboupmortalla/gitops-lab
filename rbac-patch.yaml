@@ -1,0 +1,5 @@
+data:
+  policy.csv: |
+    p, role:web-team, applications, get, web/*, allow
+    p, role:web-team, applications, sync, web/*, allow
+    g, dev-web, role:web-team
