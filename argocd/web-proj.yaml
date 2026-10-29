@@ -13,8 +13,5 @@ spec:
       namespace: web-prod
   clusterResourceWhitelist:
     - group: ''
-      kind: Pod
-    - group: 'apps'
-      kind: Deployment
-    - group: 'autoscaling'
-      kind: autoscaling
+      kind: Namespace
+   

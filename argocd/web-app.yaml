@@ -39,7 +39,7 @@ spec:
     metadata:
       name: 'web-app-{{.webEnv}}'
     spec:
-      project: default
+      project: web
       source:
         path: 'app/web/overlays/{{.webEnv}}'
         repoURL: git@github.com:mboupmortalla/gitops-lab.git/
