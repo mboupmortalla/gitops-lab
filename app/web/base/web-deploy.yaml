@@ -1,9 +1,21 @@
-apiVersion: apps/v1
-kind: Deployment
+# apiVersion: apps/v1
+# kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: web
   namespace: gitops-demo
 spec:
+  spec:
+  strategy:
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: {}              
+        - setWeight: 50
+        - pause:
+            duration: 30s
+        - setWeight: 100 
   selector:
     matchLabels:
       app: web

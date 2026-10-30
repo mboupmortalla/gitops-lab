@@ -8,8 +8,8 @@ spec:
   minReplicas: 2
   scaleTargetRef:
     name: web
-    kind: Deployment
-    apiVersion: apps/v1
+    kind: Rollout
+    apiVersion: argoproj.io/v1alpha1
   metrics:
     - resource:
         name: cpu
