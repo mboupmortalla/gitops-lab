@@ -31,8 +31,6 @@ patches:
       - op: replace
         path: /metadata/name
         value: web-prod
-      - op: add
-        path: /metadata/labels/istio-injection
-        value: enabled
+
 
       
