@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base/
+  - success-rate.yaml
 
 namespace: web-dev
 
@@ -33,4 +34,12 @@ patches:
         path: /metadata/labels/istio-injection
         value: enabled
 
-      
+  - target:
+      kind: Rollout
+    patch: |-
+      - op: add
+        path: /spec/strategy/canary/analysis
+        value:
+          templates:
+            - templateName: success-rate
+          startingStep: 1            # démarre après le 1er setWeight (20 %)
