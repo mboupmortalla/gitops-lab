@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - hpa.yaml
   - web-deploy.yaml
+  - namespace.yaml
