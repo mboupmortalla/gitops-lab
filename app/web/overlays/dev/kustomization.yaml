@@ -9,7 +9,7 @@ namespace: web-dev
 images:
   - name: nginx
     newName: nginx
-    newTag: 1.98-alpine
+    newTag: 1.28-alpine
 
 patches:
   - target:
