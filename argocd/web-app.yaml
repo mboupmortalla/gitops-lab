@@ -46,12 +46,12 @@ spec:
       destination:
         namespace: "web-{{.webEnv}}"
         server: https://kubernetes.default.svc
-      syncPolicy:
         ignoreDifferences:
           - group: networking.istio.io
             kind: VirtualService
             jqPathExpressions: 
               - .spec.http[].route[].weight
+      syncPolicy:
         automated:
           enabled: true
           prune: true
