@@ -48,9 +48,10 @@ spec:
         server: https://kubernetes.default.svc
       syncPolicy:
         ignoreDifferences:
-          - group: "networking.istio.io"
+          - group: networking.istio.io
             kind: VirtualService
-            jqPathExpressions: .spec.http[].route[].weight
+            jqPathExpressions: 
+              - .spec.http[].route[].weight
         automated:
           enabled: true
           prune: true
