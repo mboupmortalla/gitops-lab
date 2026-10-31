@@ -20,11 +20,10 @@
 #     syncOptions:
 #       - CreateNamespace=true
 
-
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name:  web-app-env
+  name: web-app-env
   namespace: argocd
 
 spec:
@@ -37,20 +36,25 @@ spec:
           - webEnv: prod
   template:
     metadata:
-      name: 'web-app-{{.webEnv}}'
+      name: "web-app-{{.webEnv}}"
     spec:
       project: web
       source:
-        path: 'app/web/overlays/{{.webEnv}}'
+        path: "app/web/overlays/{{.webEnv}}"
         repoURL: git@github.com:mboupmortalla/gitops-lab.git/
         targetRevision: main
       destination:
-        namespace: 'web-{{.webEnv}}'
+        namespace: "web-{{.webEnv}}"
         server: https://kubernetes.default.svc
       syncPolicy:
+        ignoreDifferences:
+          - group: "networking.istio.io"
+            kind: VirtualService
+            jqPathExpressions: .spec.http[].route[].weight
         automated:
           enabled: true
           prune: true
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
+          - RespectIgnoreDifferences=true
