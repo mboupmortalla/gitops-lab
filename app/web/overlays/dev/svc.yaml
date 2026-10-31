@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  web-stable
+  namespace: web-dev
+spec:
+  selector:
+    app:  web
+  type:  ClusterIP
+  ports:
+  - name:  http
+    port:  80
+    targetPort:  80
+
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  web-canary
+  namespace: web-dev
+spec:
+  selector:
+    app:  web
+  type:  ClusterIP
+  ports:
+  - name:  http
+    port:  80
+    targetPort:  80

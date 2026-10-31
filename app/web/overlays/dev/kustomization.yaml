@@ -4,6 +4,8 @@ kind: Kustomization
 resources:
   - ../../base/
   - success-rate.yaml
+  - vs-test.yaml
+  - svc.yaml
 
 namespace: web-dev
 
@@ -42,4 +44,19 @@ patches:
         value:
           templates:
             - templateName: success-rate
-          startingStep: 1            # démarre après le 1er setWeight (20 %)
+          startingStep: 1           
+      
+      - op: add
+        path: /spec/strategy/canary/stableService
+        value: web-stable
+      - op: add
+        path: /spec/strategy/canary/canaryService
+        value: web-canary
+      - op: add
+        path: /spec/strategy/canary/trafficRouting
+        value:
+          istio:
+            virtualService:
+              name: web
+              routes:
+                - primary

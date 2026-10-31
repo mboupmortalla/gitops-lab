@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: web
+  namespace: web-dev
+
+spec:
+  hosts:
+    - web.web-dev.svc.cluster.local
+  http:
+    - route:
+        - destination:
+            host: web-stable.web-dev.svc.cluster.local
+          weight: 100
+        - destination:
+            host: web-canary.web-dev.svc.cluster.local
+          weight: 0
+      name: primary
+        

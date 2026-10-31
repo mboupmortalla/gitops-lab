@@ -6,7 +6,9 @@ metadata:
   name: web
   namespace: gitops-demo
 spec:
-  spec:
+  selector:
+    matchLabels:
+      app: web
   strategy:
     canary:
       steps:
@@ -16,9 +18,7 @@ spec:
         - pause:
             duration: 30s
         - setWeight: 100 
-  selector:
-    matchLabels:
-      app: web
+  
   template:
     metadata:
       labels:
