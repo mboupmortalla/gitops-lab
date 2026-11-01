@@ -8,6 +8,7 @@ spec:
       interval: 30s            # mesure toutes les 30 s
       failureLimit: 1          # plus d'1 mesure en échec = abandon
       successCondition: result[0] >= 0.95     # ton seuil, entre 0 et 1
+      failureCondition: result[0] < 0.95     # ton seuil, entre 0 et 1
       provider:
         prometheus:
           address: http://prometheus.istio-system:9090
