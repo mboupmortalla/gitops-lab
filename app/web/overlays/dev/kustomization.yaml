@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ../../base/
   - success-rate.yaml
-  - vs-test.yaml
+  - virtualservice.yaml
   - svc.yaml
 
 namespace: web-dev
