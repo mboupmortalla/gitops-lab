@@ -12,7 +12,7 @@ namespace: web-dev
 images:
   - name: nginx
     newName: nginx
-    newTag: 1.28-alpine
+    newTag: 1.29-alpine
 
 patches:
   - target:
